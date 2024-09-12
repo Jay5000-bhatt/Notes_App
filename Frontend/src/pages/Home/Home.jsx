@@ -97,7 +97,7 @@ const Home = () => {
       <Navbar onSearch={handleSearch}/>
 
       <div className="container mx-auto">
-        <div className="grid grid-cols-3 gap-4 mt-8 mx-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8 mx-8">
           {loading ? (
             <p>Loading...</p>
           ) : notes.length > 0 ? (

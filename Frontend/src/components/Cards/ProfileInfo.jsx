@@ -30,12 +30,12 @@ const ProfileInfo = ({ onLogout }) => {
 
   return (
     <div className="flex items-center gap-3">
-      <div className="w-12 h-12 flex items-center justify-center text-slate-950 font-medium bg-slate-200 rounded-full">
+      <div className=" w-8 h-8 md:w-12 md:h-12 xl:w-12 xl:h-12 flex md:flex xl:flex  items-center justify-center text-slate-950 font-medium bg-slate-200 rounded-full">
         {getInitials(user.name)}
       </div>
-      <div>
-        <p className="text-sm font-medium">{user.name}</p>
-        <button className="text-sm text-slate-700 underline" onClick={onLogout}>
+      <div className="flex flex-col items-center justify-center space-y-2">
+        <p className="text-xs md:text-sm xl:text-sm font-medium">{user.name}</p>
+        <button className="text-xs md:text-sm xl:text-sm text-slate-700 underline" onClick={onLogout}>
           Logout
         </button>
       </div>

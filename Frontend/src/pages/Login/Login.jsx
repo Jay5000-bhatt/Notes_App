@@ -56,8 +56,8 @@ const Login = () => {
         <h2 className="text-xl font-medium text-black py-2">Notes</h2>
       </div>
 
-      <div className="flex items-center justify-center mt-28">
-        <div className="w-96 border rounded bg-white px-7 py-10">
+      <div className="flex items-center justify-center mt-16 md:mt-20 xl:mt-28  ">
+        <div className="w-3/4 md:w-96 xl:w-96 border bg-white px-5 xl:px-7 py-10 rounded-3xl md:rounded-3xl xl:rounded-2xl ">
           <form onSubmit={handleLogin}>
             <h4 className="text-2xl mb-7">Login</h4>
 
@@ -83,7 +83,7 @@ const Login = () => {
             <p className="text-sm text-center mt-4">
               Not Registered Yet? {""}
               <Link
-                to="/signup"
+                to="/"
                 className="font-medium
               text-primary underline"
               >

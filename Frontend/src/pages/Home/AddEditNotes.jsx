@@ -36,7 +36,7 @@ const AddEditNotes = ({ noteData, type, onClose, onNoteAdded }) => {
   const addNewNote = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/note/create-note",
+        "https://notes-app-api-sigma.vercel.app/note/create-note",
         { title, content, tags },
         { withCredentials: true }
       );

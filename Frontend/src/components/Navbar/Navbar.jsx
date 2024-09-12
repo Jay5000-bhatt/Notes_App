@@ -12,7 +12,7 @@ const Navbar = ({ onSearch }) => {
     try {
       // Make an API call to log out
       const response = await axios.post(
-        "http://localhost:5000/user/logout",
+        "https://notes-app-api-sigma.vercel.app/user/logout",
         {},
         { withCredentials: true }
       );

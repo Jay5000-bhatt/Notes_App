@@ -10,7 +10,7 @@ const ProfileInfo = ({ onLogout }) => {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/user/get-user",
+          "https://notes-app-api-sigma.vercel.app/user/get-user",
           { withCredentials: true }
         );
         if (response.data.success) {

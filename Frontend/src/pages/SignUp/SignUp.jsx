@@ -35,7 +35,7 @@ const SignUp = () => {
     // SignUp Api Call
     try {
       // SignUp API Call using Axios
-      const response = await axios.post("http://localhost:5000/user/create", {
+      const response = await axios.post("https://notes-app-api-sigma.vercel.app/user/create", {
         email,
         name,
         password,

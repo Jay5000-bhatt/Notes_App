@@ -22,7 +22,7 @@ const Home = () => {
   const fetchNotes = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://localhost:5000/note/get-notes`, {
+      const response = await axios.get(`https://notes-app-api-sigma.vercel.app/note/get-notes`, {
         withCredentials: true,
       });
       const sortedNotes = response.data.notes.sort(
@@ -46,7 +46,7 @@ const Home = () => {
 
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/note/search-notes", {
+      const response = await axios.get("https://notes-app-api-sigma.vercel.app/note/search-notes", {
         params: { query },
         withCredentials: true,
       });
@@ -69,7 +69,7 @@ const Home = () => {
   // Handle delete note
   const deleteNote = async (noteId) => {
     try {
-      await axios.delete(`http://localhost:5000/note/delete-note/${noteId}`, {
+      await axios.delete(`https://notes-app-api-sigma.vercel.app/note/delete-note/${noteId}`, {
         withCredentials: true,
       });
       fetchNotes(); // Refetch notes to reflect changes
@@ -82,7 +82,7 @@ const Home = () => {
   const handlePinNote = async (noteId, currentPinStatus) => {
     try {
       await axios.put(
-        `http://localhost:5000/note/update-pin/${noteId}`,
+        `https://notes-app-api-sigma.vercel.app/update-pin/${noteId}`,
         { isPinned: !currentPinStatus },
         { withCredentials: true }
       );

@@ -29,7 +29,7 @@ const Login = () => {
     try {
       // Login API Call using Axios
       const response = await axios.post(
-        "http://localhost:5000/user/login",
+        "https://notes-app-api-sigma.vercel.app/user/login",
         {
           email,
           password,

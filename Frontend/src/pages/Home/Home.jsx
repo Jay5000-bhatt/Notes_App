@@ -149,7 +149,7 @@ const Home = () => {
         }}
         style={{ overlay: { backgroundColor: "rgba(0,0,0,0.2)" } }}
         contentLabel=""
-        className="w-[80%] md:w-[70%] xl:w-[50%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-hidden"
+        className="w-[80%] md:w-[70%] xl:w-[50%] max-h-3/4 bg-white rounded-md mx-auto mt-20 p-5 overflow-hidden"
       >
         <AddEditNotes
           type={openAddEditModal.type}

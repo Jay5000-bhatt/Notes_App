@@ -5,6 +5,8 @@ import SearchBar from "../SearchBar.jsx/SearchBar.jsx";
 import axios from "axios";
 
 const Navbar = ({ onSearch }) => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const [searchQuery, setSearchQuery] = useState("");
   const navigate = useNavigate();
 
@@ -12,7 +14,7 @@ const Navbar = ({ onSearch }) => {
     try {
       // Make an API call to log out
       const response = await axios.post(
-        "https://notes-app-api-sigma.vercel.app/user/logout",
+        `${baseUrl}/user/logout`,
         {},
         { withCredentials: true }
       );
@@ -45,7 +47,7 @@ const Navbar = ({ onSearch }) => {
   };
 
   return (
-    <div className="bg-white flex items-center justify-between px-3 md:px-6 xl:px-6 py-2 drop-shadow">
+    <div className="relative bg-white flex items-center justify-between px-3 md:px-6 xl:px-6 py-2 drop-shadow z-50">
       <h2 className="text-lg xl:text-xl font-medium text-black py-2">Notes</h2>
 
       <SearchBar 

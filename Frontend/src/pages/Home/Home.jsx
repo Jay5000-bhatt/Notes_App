@@ -10,6 +10,8 @@ import EmptyCard from "../../components/EmptyCard/EmptyCard.jsx";
 import EmptyNote from "../../assets/Empty_Img.svg";
 
 const Home = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -22,7 +24,7 @@ const Home = () => {
   const fetchNotes = async () => {
     setLoading(true);
     try {
-      const response = await axios.get(`https://notes-app-api-sigma.vercel.app/note/get-notes`, {
+      const response = await axios.get(`${baseUrl}/note/get-notes`, {
         withCredentials: true,
       });
       const sortedNotes = response.data.notes.sort(
@@ -46,7 +48,7 @@ const Home = () => {
 
     setLoading(true);
     try {
-      const response = await axios.get("https://notes-app-api-sigma.vercel.app/note/search-notes", {
+      const response = await axios.get(`${baseUrl}/note/search-notes`, {
         params: { query },
         withCredentials: true,
       });
@@ -69,7 +71,7 @@ const Home = () => {
   // Handle delete note
   const deleteNote = async (noteId) => {
     try {
-      await axios.delete(`https://notes-app-api-sigma.vercel.app/note/delete-note/${noteId}`, {
+      await axios.delete(`${baseUrl}/note/delete-note/${noteId}`, {
         withCredentials: true,
       });
       fetchNotes(); // Refetch notes to reflect changes
@@ -82,7 +84,7 @@ const Home = () => {
   const handlePinNote = async (noteId, currentPinStatus) => {
     try {
       await axios.put(
-        `https://notes-app-api-sigma.vercel.app/update-pin/${noteId}`,
+        `${baseUrl}/note/update-pin/${noteId}`,
         { isPinned: !currentPinStatus },
         { withCredentials: true }
       );
@@ -121,7 +123,7 @@ const Home = () => {
               />
             ))
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex items-center justify-center z-10">
               <EmptyCard
                 imgSrc={EmptyNote}
                 message={`Start Creating Your First Note! Click the 'Add' Button to Write down your thoughts, ideas, and reminders, Let's get started!`}
@@ -132,7 +134,7 @@ const Home = () => {
       </div>
 
       <button
-        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-blue-600 absolute right-10 bottom-10"
+        className="w-12 h-12 md:w-16 md:h-16 xl:w-16 xl:h-16 flex items-center justify-center rounded-2xl bg-primary hover:bg-blue-600 absolute right-10 bottom-10"
         onClick={() => {
           setOpenAddEditModal({ isShown: true, type: "add", data: null });
         }}
@@ -147,7 +149,7 @@ const Home = () => {
         }}
         style={{ overlay: { backgroundColor: "rgba(0,0,0,0.2)" } }}
         contentLabel=""
-        className="w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-hidden"
+        className="w-[80%] md:w-[70%] xl:w-[50%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-hidden"
       >
         <AddEditNotes
           type={openAddEditModal.type}

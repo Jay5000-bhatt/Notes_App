@@ -4,6 +4,8 @@ import TagsInput from "../../components/Input/TagsInput.jsx";
 import { MdClose } from "react-icons/md";
 
 const AddEditNotes = ({ noteData, type, onClose, onNoteAdded }) => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const [title, setTitle] = useState(noteData ? noteData.title : "");
   const [content, setContent] = useState(noteData ? noteData.content : "");
   const [tags, setTags] = useState(noteData ? noteData.tags : []);
@@ -36,7 +38,7 @@ const AddEditNotes = ({ noteData, type, onClose, onNoteAdded }) => {
   const addNewNote = async () => {
     try {
       const response = await axios.post(
-        "https://notes-app-api-sigma.vercel.app/note/create-note",
+        `${baseUrl}/note/create-note`,
         { title, content, tags },
         { withCredentials: true }
       );
@@ -56,7 +58,7 @@ const AddEditNotes = ({ noteData, type, onClose, onNoteAdded }) => {
   const editNote = async () => {
     try {
       const response = await axios.put(
-        `http://localhost:5000/note/update-note/${noteData._id}`,
+        `${baseUrl}/note/update-note/${noteData._id}`,
         { title, content, tags },
         { withCredentials: true }
       );
@@ -86,7 +88,7 @@ const AddEditNotes = ({ noteData, type, onClose, onNoteAdded }) => {
         <label className="input-label">Title</label>
         <input
           type="text"
-          className="text-2xl text-slate-950 outline-none"
+          className="h-8 md:h-10 xl:h-10 text-base md:text-xl xl:text-xl text-slate-950 bg-slate-100 outline-none rounded pl-2"
           placeholder="Add your Title Here..."
           value={title}
           onChange={({ target }) => setTitle(target.value)}
@@ -97,7 +99,7 @@ const AddEditNotes = ({ noteData, type, onClose, onNoteAdded }) => {
         <label className="input-label">Content</label>
         <textarea
           type="text"
-          className="text-sm text-slate-950 outline-none bg-slate-50 p-2 rounded"
+          className="text-sm md:text-xl xl:text-xl text-slate-950 outline-none bg-slate-100 p-2 rounded-2xl md:rounded xl:rounded pl-2"
           placeholder="Content Here..."
           rows={10}
           value={content}

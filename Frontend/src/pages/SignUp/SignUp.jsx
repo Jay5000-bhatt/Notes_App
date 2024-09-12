@@ -6,6 +6,8 @@ import { validateEmail } from "../../utils/helper.js";
 import axios from "axios";
 
 const SignUp = () => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +37,7 @@ const SignUp = () => {
     // SignUp Api Call
     try {
       // SignUp API Call using Axios
-      const response = await axios.post("https://notes-app-api-sigma.vercel.app/user/create", {
+      const response = await axios.post(`${baseUrl}/user/create`, {
         email,
         name,
         password,

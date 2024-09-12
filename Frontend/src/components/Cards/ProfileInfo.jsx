@@ -3,6 +3,8 @@ import axios from "axios";
 import { getInitials } from "../../utils/helper.js";
 
 const ProfileInfo = ({ onLogout }) => {
+  const baseUrl = import.meta.env.VITE_BASE_URL;
+
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -10,7 +12,7 @@ const ProfileInfo = ({ onLogout }) => {
     const fetchUserDetails = async () => {
       try {
         const response = await axios.get(
-          "https://notes-app-api-sigma.vercel.app/user/get-user",
+          `${baseUrl}/user/get-user`,
           { withCredentials: true }
         );
         if (response.data.success) {

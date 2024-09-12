@@ -123,7 +123,7 @@ const Home = () => {
               />
             ))
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center z-10">
+            <div className="absolute inset-0 flex items-center justify-center">
               <EmptyCard
                 imgSrc={EmptyNote}
                 message={`Start Creating Your First Note! Click the 'Add' Button to Write down your thoughts, ideas, and reminders, Let's get started!`}

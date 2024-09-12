@@ -23,6 +23,11 @@ const PORT = process.env.PORT || 5000;
 
 ConnectDB();
 
+// Root route handler
+app.get("/", (req, res) => {
+  res.send("Welcome to the API!");
+});
+
 app.use("/user", userRoutes);
 app.use("/note", noteRoutes);
 

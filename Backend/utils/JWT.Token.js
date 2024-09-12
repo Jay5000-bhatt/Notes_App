@@ -9,10 +9,10 @@ export const generateTokenAndSetCookie = (res, userId) => {
   });
 
   res.cookie("token", token, {
-    httpOnly: true,  // To prevent client-side JavaScript from accessing the cookie
-    secure: process.env.NODE_ENV === "production",  // Secure flag only for HTTPS in production
-    sameSite: "strict",  // Prevent CSRF attacks
-    maxAge: 7 * 24 * 60 * 60 * 1000,  // 7 days in milliseconds
+    httpOnly: true, // Prevent client-side JavaScript from accessing the cookie
+    secure: process.env.NODE_ENV === "production", // Secure flag only for HTTPS in production
+    sameSite: "None", // Required for cross-site cookies in production
+    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
   });
 
   return token;
@@ -20,7 +20,7 @@ export const generateTokenAndSetCookie = (res, userId) => {
 
 export const protect = (req, res, next) => {
   try {
-    const token = req.cookies.token;  // Extract token from cookies
+    const token = req.cookies.token; // Extract token from cookies
 
     if (!token) {
       return res.status(401).json({ message: "Not authorized, no token" });
@@ -30,10 +30,11 @@ export const protect = (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
     // Set the user object in req for further use in other routes
-    req.user = { userId: decoded.userId };  // Ensure consistent naming
+    req.user = { userId: decoded.userId }; // Ensure consistent naming
 
-    next();  // Pass to next middleware or route
+    next(); // Pass to next middleware or route
   } catch (error) {
+    console.error("Token verification failed:", error.message); // Log errors for debugging
     return res.status(401).json({ message: "Not authorized, invalid token" });
   }
 };

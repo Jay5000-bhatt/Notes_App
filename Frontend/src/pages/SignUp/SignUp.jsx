@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import PasswordInput from "../../components/Input/PasswordInput";
+import PasswordInput from "../../components/Input/PasswordInput.jsx";
 import { Link, useNavigate } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
-import { validateEmail } from "../../utils/helper";
+import { validateEmail } from "../../utils/helper.js";
 import axios from "axios";
 
 const SignUp = () => {

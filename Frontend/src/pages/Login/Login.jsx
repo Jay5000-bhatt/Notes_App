@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
-import Navbar from "../../components/Navbar/Navbar.jsx";
 import PasswordInput from "../../components/Input/PasswordInput.jsx";
 import { validateEmail } from "../../utils/helper.js";
 import axios from "axios"; // Import axios

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import ProfileInfo from "../Cards/Profileinfo";
+import ProfileInfo from "../Cards/ProfileInfo.jsx";
 import { useNavigate } from "react-router-dom";
-import SearchBar from "../SearchBar.jsx/SearchBar";
+import SearchBar from "../SearchBar.jsx/SearchBar.jsx";
 import axios from "axios";
 
 const Navbar = ({ onSearch }) => {

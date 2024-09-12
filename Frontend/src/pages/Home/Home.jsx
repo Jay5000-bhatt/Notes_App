@@ -3,10 +3,10 @@ import axios from "axios";
 import Modal from "react-modal";
 import { MdAdd } from "react-icons/md";
 
-import Navbar from "../../components/Navbar/Navbar";
-import NoteCard from "../../components/Cards/NoteCard";
-import AddEditNotes from "./AddEditNotes";
-import EmptyCard from "../../components/EmptyCard/EmptyCard";
+import Navbar from "../../components/Navbar/Navbar.jsx";
+import NoteCard from "../../components/Cards/NoteCard.jsx";
+import AddEditNotes from "./AddEditNotes.jsx";
+import EmptyCard from "../../components/EmptyCard/EmptyCard.jsx";
 import EmptyNote from "../../assets/Empty_Img.svg";
 
 const Home = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { getInitials } from "../../utils/helper";
+import { getInitials } from "../../utils/helper.js";
 
 const ProfileInfo = ({ onLogout }) => {
   const [user, setUser] = useState(null);

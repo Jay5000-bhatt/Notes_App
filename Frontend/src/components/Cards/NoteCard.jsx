@@ -1,6 +1,7 @@
 import React from "react";
-import { MdOutlinePushPin } from "react-icons/md";
-import { MdCreate, MdDelete } from "react-icons/md";
+import { MdCreate, MdDelete, MdOutlinePushPin } from "react-icons/md";
+import { BsCheckSquare } from "react-icons/bs";
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 const NoteCard = ({
   title,
@@ -8,9 +9,11 @@ const NoteCard = ({
   content,
   tags,
   isPinned,
+  isCompleted,
   onEdit,
   onDelete,
   onPinNote,
+  onToggleComplete,
 }) => {
   return (
     <div className="border rounded p-4 bg-white hover:shadow-xl transition-all ease-in-out">
@@ -20,7 +23,9 @@ const NoteCard = ({
           <span className="text-xs text-slate-500">{date}</span>
         </div>
         <MdOutlinePushPin
-          className={`jjj ${isPinned ? "text-primary" : "text-slate-300 cursor-pointer"}`}
+          className={`jjj ${
+            isPinned ? "text-primary" : "text-slate-300 cursor-pointer"
+          }`}
           onClick={onPinNote}
         />
       </div>
@@ -30,6 +35,18 @@ const NoteCard = ({
         <div className="text-xs text-slate-500">{tags}</div>
 
         <div className="flex items-center gap-2">
+          <span
+            onClick={onToggleComplete}
+            className={`icon-btn ${
+              isCompleted ? "text-yellow-600" : "text-slate-300"
+            } hover:text-yellow-600`}
+          >
+            {isCompleted ? (
+              <IoCheckmarkDoneCircleOutline size={28} />
+            ) : (
+              <BsCheckSquare />
+            )}
+          </span>
           <MdCreate
             onClick={onEdit}
             className="icon-btn hover:text-green-600"

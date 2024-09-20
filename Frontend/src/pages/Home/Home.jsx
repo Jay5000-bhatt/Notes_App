@@ -94,9 +94,23 @@ const Home = () => {
     }
   };
 
+  // New function to toggle isCompleted status
+  const handleToggleCompleted = async (noteId, currentCompletedStatus) => {
+    try {
+      await axios.put(
+        `${baseUrl}/note/update-completed/${noteId}`,
+        { isCompleted: !currentCompletedStatus },
+        { withCredentials: true }
+      );
+      fetchNotes(); // Refetch notes to reflect changes
+    } catch (error) {
+      setError("Failed to update note's completion status");
+    }
+  };
+
   return (
     <>
-      <Navbar onSearch={handleSearch}/>
+      <Navbar onSearch={handleSearch} />
 
       <div className="container mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8 mx-8">
@@ -111,6 +125,7 @@ const Home = () => {
                 content={note.content}
                 tags={note.tags.map((tag) => `#${tag}`).join("  ")}
                 isPinned={note.isPinned}
+                isCompleted={note.isCompleted} // Pass isCompleted status
                 onEdit={() => {
                   setOpenAddEditModal({
                     isShown: true,
@@ -120,6 +135,9 @@ const Home = () => {
                 }}
                 onDelete={() => deleteNote(note._id)}
                 onPinNote={() => handlePinNote(note._id, note.isPinned)} // Pass pin status
+                onToggleComplete={() =>
+                  handleToggleCompleted(note._id, note.isCompleted)
+                } // Pass isCompleted toggle function
               />
             ))
           ) : (

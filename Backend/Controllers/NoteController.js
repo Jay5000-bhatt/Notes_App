@@ -185,7 +185,7 @@ export const updateIsPinned = async (req, res) => {
   }
 };
 
-// Update only the isPinned field of a note
+// Update only the isCompleted field of a note
 export const updateIsCompleted = async (req, res) => {
   try {
     const { userId } = req.user; // Get the userId from the JWT middleware
